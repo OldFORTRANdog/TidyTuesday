@@ -1,0 +1,40 @@
+---
+title: "TidyTuesday-2019-04-08"
+author: "Dave Eslinger"
+date: "April 10, 2019"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+# Tidy Tuesday for APril 9, 2019
+
+Data on Grand Slam Tennis winners.
+See [https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-04-09] for information.
+
+```{r}
+#install.packages('tidyverse')
+library(tidyverse)
+
+player_dob <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-04-09/player_dob.csv")
+
+# Remove Duplicates in 1977.
+# NOTE Australian Open held twice in 1977!
+grand_slams <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-04-09/grand_slams.csv") %>% 
+  arrange(year,grand_slam,name,gender) %>% 
+  distinct(year,grand_slam,name, .keep_all = TRUE)
+
+grand_slam_timeline <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-04-09/grand_slam_timeline.csv")
+```
+
+Check out the data
+```{r}
+grand_slams %>%
+  count(year, gender) %>%
+  arrange(gender, desc(year)) %>% 
+  View()
+```
+
