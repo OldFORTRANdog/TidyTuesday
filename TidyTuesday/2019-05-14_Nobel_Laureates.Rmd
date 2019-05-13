@@ -1,0 +1,26 @@
+---
+title: "Nobel publications"
+author: "Dave Eslinger"
+date: "5/13/2019"
+output: html_document
+---
+
+# Nobel Laureate Publication Exploration
+Tidy Tuesday for 5/15/2019, data from https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-05-14
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+```
+
+Get the data
+```{r}
+nobel_winners <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-05-14/nobel_winners.csv")
+nobel_winner_all_pubs <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-05-14/nobel_winner_all_pubs.csv")
+
+nobel_winners %>% 
+  count(birth_country) %>%
+  order(n)
+```
+
