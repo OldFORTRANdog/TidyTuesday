@@ -21,6 +21,6 @@ nobel_winner_all_pubs <- readr::read_csv("https://raw.githubusercontent.com/rfor
 
 nobel_winners %>% 
   count(birth_country) %>%
-  order(n)
+  order()
 ```
 
