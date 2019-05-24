@@ -1,0 +1,21 @@
+---
+title: "Student_Teacher_Ratio_2019-04-07"
+author: "Dave Eslinger"
+date: "5/6/2019"
+output: html_document
+---
+
+TidyTuesday for 05/07/2019.  GitHub location: https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-05-07
+
+
+```{r}
+library(tidyverse)
+student_ratio <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-05-07/student_teacher_ratio.csv")
+
+student_ratio %>% 
+  select(country) %>% 
+  unique() %>% 
+  count
+
+```
+
