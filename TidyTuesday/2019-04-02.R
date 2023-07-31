@@ -13,12 +13,15 @@ bike_traffic
 
 bike_traffic$bike_count <- as.double(bike_traffic$bike_count)
 bike_traffic$ped_count <- as.double(bike_traffic$ped_count)
-bike_traffic$date <- as.date(bike_traffic$bike_count)
+bike_traffic$date <- as.Date(bike_traffic$bike_count)
 bike_traffic$direction <- as.factor(bike_traffic$direction)
 
 bike_traffic %>%
   select(crossing) %>%
   unique()
-  filter(crossing == "Broadway Cycle Track North Of E Union St") %>%
-  table(as.factor(direction))# %>%
-  count()
+
+foo <- bike_traffic %>%
+  filter(crossing == "Broadway Cycle Track North Of E Union St") 
+
+table(foo$direction)
+
